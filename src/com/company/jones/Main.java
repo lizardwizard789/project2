@@ -32,7 +32,7 @@ public class Main {
                 case 3:
                     if (theList.size()!=0) {
                         theList=updateTask(input, theList);
-                    }else System.out.println("bruh what you gon remove there aint none here");
+                    }else System.out.println("bruh what you gon update there aint none here");
                     break;
                 case 4:
 
