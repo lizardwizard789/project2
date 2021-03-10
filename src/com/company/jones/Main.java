@@ -24,10 +24,15 @@ public class Main {
                     theList=addTask(input, theList);
                     break;
                 case 2:
-                    theList=removeTask(input, theList);
+                    if (theList.size()!=0) {
+                        theList = removeTask(input, theList);
+                    }else System.out.println("bruh what you gon remove there aint none here");
+
                     break;
                 case 3:
-                    theList=updateTask(input, theList);
+                    if (theList.size()!=0) {
+                        theList=updateTask(input, theList);
+                    }else System.out.println("bruh what you gon remove there aint none here");
                     break;
                 case 4:
 
@@ -37,7 +42,7 @@ public class Main {
                     System.out.println("ok bye");
                     break;
                 default:
-                    System.out.println("please cooperate");
+                    System.out.println("how does he even read it?");
                     break;
 
             }
@@ -50,12 +55,12 @@ public class Main {
 
     }
     private static ArrayList<Task> removeTask(AdIn input,ArrayList<Task> theList){
-        theList.remove(input.promptInt("which index wold you like to remove", theList.size()));
+        theList.remove(input.promptInt("which index wold you like to remove", theList.size()-1));
         return theList;
     }
     private static ArrayList<Task> updateTask(AdIn input, ArrayList<Task> theList){
         System.out.println();
-        int replaceIndex=input.promptInt("which index would you like to update", theList.size());
+        int replaceIndex=input.promptInt("which index would you like to update", theList.size()-1);
         theList.set(replaceIndex, new Task(input));
         return theList;
     }
