@@ -1,6 +1,7 @@
 package com.company.jones;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -12,12 +13,13 @@ public class Main {
         ArrayList<Task> theList=new ArrayList<Task>();
         do {
 
-            choice=(input.promptInt("pick time! choos e nuber for action/n" +
+            choice=(input.promptInt("pick time! choos e nuber for action\n" +
                     "1: add task\n"+
                     "2: remove task\n" +
                     "3:update task\n" +
                     "4:list all task\n" +
-                    "0: exit\nChoice:", 4));
+                    "5: sort tasks by priority and then name\n"+
+                    "0: exit\nChoice:", 5));
             switch(choice)
             {
                 case 1:
@@ -37,6 +39,10 @@ public class Main {
                 case 4:
 
                     sendList(input, theList);
+                    break;
+                case 5:
+                    System.out.println("the list got sorted!");
+                    Collections.sort(theList);
                     break;
                 case 0:
                     System.out.println("ok bye");
@@ -64,18 +70,22 @@ public class Main {
         theList.set(replaceIndex, new Task(input));
         return theList;
     }
-    private static void sendList(AdIn input,ArrayList<Task> theList) {
-        int priority=input.promptInt("If you would like to only look for a certain priority level of items, please input that priority number. if you wish to print all items, hit the 6 key and then the enter key", 6);
-        if (priority ==6){
-            for (int t=0;t<theList.size();t++){
-                System.out.println(theList.get(t).toString());
+
+    private static void sendList(AdIn input, ArrayList<Task> theList) {
+
+
+        int priority = input.promptInt("If you would like to only look for a certain priority level of items, please input that priority number. if you wish to print all items, hit the 6 key and then the enter key", 6);
+        if (priority == 6) {
+            for (Task e: theList) {
+                System.out.println(e.toString());
             }
-        }else{
-            for (int i=0;i<theList.size();i++){
-                if (theList.get(i).getPriority()==priority){
-                    System.out.println(theList.get(i).toString());
+        } else {
+            for (Task e: theList) {
+                if (e.getPriority() == priority) {
+                    System.out.println(e.toString());
                 }
             }
         }
     }
+
 }

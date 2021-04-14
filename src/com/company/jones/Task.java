@@ -1,6 +1,6 @@
 package com.company.jones;
 
-public class Task {
+public class Task implements Comparable<Task>{
     private String title;
     private int priority;
     private String description;
@@ -37,6 +37,18 @@ public class Task {
 
     @Override
     public String toString() {
-        return this.getTitle()+": \n "+this.getDescription()+"\nPriotity level: "+this.getPriority();
+        return "\n------------------------------------------------------------------------------------------\n"+this.getTitle()+": \n description: "+this.getDescription()+"\nPriotity level: "+this.getPriority()+"\n------------------------------------------------------------------------------------------\n";
+    }
+
+
+    public int compareTo(Task o) {
+        int priorityCompare=Integer.compare(priority, o.getPriority());
+        int nameCompare = title.compareTo(o.getTitle());
+
+        if (priorityCompare != 0) {
+            return priorityCompare;
+        } else {
+            return nameCompare;
+        }
     }
 }
